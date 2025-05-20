@@ -243,6 +243,34 @@ body.dark-theme .theme-toggle .sun-icon {
     display: none;
 }
 
+/* Соціальні посилання */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-color);
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    stroke: var(--accent-color);
+}
+
+header .social-links {
+    margin-right: 1rem;
+}
+
+footer .social-links {
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+
 /* Мобільне меню */
 .mobile-menu-toggle {
     display: none;
@@ -340,7 +368,7 @@ body.dark-theme .theme-toggle .sun-icon {
     text-align: left;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: clamp(1rem, 2vh, 1.5rem);
+    padding: clamp(2rem, 5vh, 1.53rem);
     width: 70%;
     height: 80%;
     margin-left: 0;
@@ -754,12 +782,22 @@ form button {
     background: var(--section-bg);
     padding: 1rem;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Відступ між рядками */
 }
 
 .contact-info p {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
-    margin: 0.5rem 0;
+    margin: 0;
     font-family: 'Montserrat', serif;
+}
+
+.contact-info .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Відступ між іконками */
+    margin-top: 0.5rem; /* Відступ між "Адреса" і соціальними лінками */
 }
 
 /* Футер */
@@ -775,6 +813,105 @@ footer {
 footer p {
     font-family: 'Montserrat', serif;
 }
+
+
+
+/* Футер */
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 1rem 0;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    margin-top: clamp(0.5rem, 1vw, 1rem);
+}
+
+footer p {
+    font-family: 'Montserrat', serif;
+}
+
+
+
+/* Секція збору донатів */
+
+body.dark-theme h2,
+body.dark-theme h3 {
+    color: #ffffff; /* Білий колір для темної теми */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Тінь для виділення тексту */
+    transition: color 0.3s, text-shadow 0.3s; /* Плавна зміна */
+}
+
+.donate {
+    padding: 4rem 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.donate-intro {
+    margin-bottom: 3rem;
+}
+
+.donate-intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.donate-intro p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.donate-block {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.donate-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.donate-block h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.donate-block p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Адаптивність для менших екранів */
+@media (max-width: 768px) {
+    .donate-intro h2 {
+        font-size: 2rem;
+    }
+
+    .donate-intro p {
+        font-size: 1rem;
+    }
+
+    .donate-block h3 {
+        font-size: 1.5rem;
+    }
+
+    .donate-block p {
+        font-size: 0.9rem;
+    }
+
+    .donate-block {
+        padding: 1.5rem;
+    }
+}
+
+
 
 /* Адаптивність */
 @media (max-width: 1024px) {
