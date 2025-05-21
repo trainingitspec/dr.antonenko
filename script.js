@@ -47,5 +47,40 @@ if (localStorage.getItem('theme') === 'dark') {
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('Дякуємо за заявку! Ми зв’яжемося з вами найближчим часом.');
-    this.reset();
+    // Тут можна додати відправку даних форми на сервер
+    this.reset(); // Очистити форму
+});
+
+
+// === ЛОГІКА АНІМАЦІЇ ЛОГОТИПУ ПРИ ПЕРШОМУ ЗАВАНТАЖЕННІ ===
+document.addEventListener('DOMContentLoaded', function() {
+    const logoAnimationContainer = document.getElementById('logoAnimationContainer');
+
+    // Перевіряємо, чи користувач вже відвідував сайт (використовуючи sessionStorage)
+    if (sessionStorage.getItem('visited')) {
+        // Якщо вже відвідував, одразу приховуємо анімацію
+        if (logoAnimationContainer) { // Перевірка на існування елемента
+            logoAnimationContainer.style.display = 'none';
+            logoAnimationContainer.remove(); // Видаляємо елемент з DOM
+        }
+    } else {
+        // Якщо вперше, показуємо анімацію
+        if (logoAnimationContainer) { // Перевірка на існування елемента
+            logoAnimationContainer.style.display = 'flex'; // Переконайтеся, що це відображає контейнер
+            sessionStorage.setItem('visited', 'true'); // Зберігаємо позначку про відвідування
+
+            // Запускаємо таймер, щоб приховати анімацію після завершення
+            setTimeout(function() {
+                logoAnimationContainer.classList.add('hidden');
+                // Видаляємо елемент з DOM після повного зникнення,
+                // щоб він не заважав взаємодії з елементами під ним
+                setTimeout(function() {
+                    if (logoAnimationContainer) { // Перевірка на існування елемента перед видаленням
+                        logoAnimationContainer.remove();
+                    }
+                }, 1000); // Час має відповідати transition в CSS (.logo-animation-container)
+            }, 2000); // 2000 мс = 2 секунди. Це тривалість анімації + невеликий запас.
+                      // Анімація img триває 1.5s, тому 2s дадуть їй повністю завершитися.
+        }
+    }
 });
