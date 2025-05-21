@@ -912,6 +912,47 @@ body.dark-theme h3 {
 }
 
 
+/* Анімація логотипу при першому завантаженні */
+.logo-animation-container {
+    position: fixed; /* Фіксоване позиціонування, щоб перекривати весь вміст */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* Білий фон, або колір, що відповідає вашому дизайну */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Високий z-index, щоб бути над усім */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out; /* Плавний перехід при зникненні */
+}
+
+.logo-animation-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.logo-animation-container img {
+    max-width: 80%; /* Щоб логотип не виходив за межі екрану */
+    max-height: 80vh; /* Щоб логотип не виходив за межі екрану по висоті */
+    opacity: 0; /* Початкова непрозорість 0 для плавного з'явлення */
+    transform: scale(0.8); /* Початковий розмір трохи менший */
+    animation: fadeInScale 1.5s ease-out forwards; /* Назва анімації, тривалість, функція часу, збереження кінцевого стану */
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 /* Адаптивність */
 @media (max-width: 1024px) {
